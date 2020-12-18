@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="formTabelaRemedios">
+        <p:growl id="message" showDetail="true" />
+        <p:commandButton value="Novo Remedio"
+                         update=":geral"
+                         actionListener="#{remedioBean.preCadastrar()}"/>
+        <br />
+        <p:dataTable value="#{remedioBean.remedios}" var="remedio"
+                     id="tabelaRemedio" paginator="true" rows="10" width="100%"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     currentPageReportTemplate="{currentPage} de {totalPages}"
+                     rowsPerPageTemplate="10,15,20" paginatorAlwaysVisible="false"
+                     emptyMessage="Nenhum REMEDIO foi encontrada">
+            <f:facet name="header">Remedios</f:facet>
+            <p:column>
+                <p:commandButton title="ALTERAR" icon="fa fa-pencil"
+                                 update=":geral" immediate="true"
+                                 actionListener="#{remedioBean.preAlterar(remedio)}" />
+                <p:commandButton title="REMOVER" icon="fa fa-trash"
+                                 update=":geral :formTabelaRemedios" immediate="true"
+                                 actionListener="#{remedioBean.remover(remedio)}">
+                    <p:confirm message="Deseja realmente remover o Remedio?"
+                               icon="ui-icon-alert" />
+                </p:commandButton>
+            </p:column>
+            <p:column headerText="Código">
+                <h:outputText value="#{remedio.idRemedio}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{remedio.nome}" />
+            </p:column>
+        </p:dataTable>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+                         style="text-align:center">
+            <p:commandButton value="Sim" type="button"
+                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="Não" type="button"
+                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
+    </h:form>
+</ui:composition>

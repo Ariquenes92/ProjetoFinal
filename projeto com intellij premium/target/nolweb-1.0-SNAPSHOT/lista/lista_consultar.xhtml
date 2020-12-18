@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="formTabelaListas">
+        <p:growl id="message" showDetail="true" />
+        <p:commandButton value="Nova Lista"
+                         update=":geral"
+                         actionListener="#{listaBean.preCadastrar()}"/>
+        <br />
+        <p:dataTable value="#{listaBean.listas}" var="lista"
+                     id="tabelaLista" paginator="true" rows="10" width="100%"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     currentPageReportTemplate="{currentPage} de {totalPages}"
+                     rowsPerPageTemplate="10,15,20" paginatorAlwaysVisible="false"
+                     emptyMessage="Nenhuma LISTA foi encontrada">
+            <f:facet name="header">Listas</f:facet>
+            <p:column>
+                <p:commandButton title="ALTERAR" icon="fa fa-pencil"
+                                 update=":geral" immediate="true"
+                                 actionListener="#{listaBean.preAlterar(lista)}" />
+                <p:commandButton title="REMOVER" icon="fa fa-trash"
+                                 update=":geral :formTabelaListas" immediate="true"
+                                 actionListener="#{listaBean.remover(lista)}">
+                    <p:confirm message="Deseja realmente remover a Lista?"
+                               icon="ui-icon-alert" />
+                </p:commandButton>
+            </p:column>
+            <p:column headerText="Código">
+                <h:outputText value="#{lista.idLista}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{lista.nome}" />
+            </p:column>
+        </p:dataTable>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+                         style="text-align:center">
+            <p:commandButton value="Sim" type="button"
+                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="Não" type="button"
+                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
+    </h:form>
+</ui:composition>

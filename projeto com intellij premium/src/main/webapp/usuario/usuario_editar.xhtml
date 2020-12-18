@@ -1,0 +1,41 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <h:form id="formCadastrar" >
+        <p:panelGrid columns="2">
+            <p:outputLabel for="usuarioNome" value="Nome" />
+            <p:inputText id="usuarioNome" value="#{usuarioBean.usuario.nome }" />
+            <p:outputLabel for="usuarioLogin" value="Login" />
+            <p:inputText id="usuarioLogin" value="#{usuarioBean.usuario.login }" />
+            <p:outputLabel for="usuarioSenha" value="Senha" />
+            <p:inputText id="usuarioSenha" value="#{usuarioBean.usuario.senha }" />
+            <p:outputLabel for="usuarioCpf" value="CPF" />
+            <p:inputText id="usuarioCpf" value="#{usuarioBean.usuario.cpf }" />
+            <p:outputLabel for="usuarioEmail" value="Email" />
+            <p:inputText id="usuarioEmail" value="#{usuarioBean.usuario.email }" />
+            <p:outputLabel for="usuarioNascimento" value="Data de Nascimento" />
+            <p:inputText id="usuarioNascimento" value="#{usuarioBean.usuario.nascimento }" />
+            <p:outputLabel for="usuarioCep" value="Cep" />
+            <p:inputText id="usuarioCep" value="#{usuarioBean.usuario.cep }" />
+            <p:outputLabel for="usuarioEndereco" value="Endereço" />
+            <p:inputText id="usuarioEndereco" value="#{usuarioBean.usuario.endereco }" />
+            <p:outputLabel for="usuarioCelular" value="Celular" />
+            <p:inputText id="usuarioCelular" value="#{usuarioBean.usuario.celular }" />
+            <p:outputLabel for="usuarioFacebook" value="Facebook" />
+            <p:inputText id="usuarioFacebook" value="#{usuarioBean.usuario.facebook }" />
+        </p:panelGrid>
+        <h:panelGrid columns="1">
+            <p:commandButton id="botaoCadastrar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{usuarioBean.cadastrar() }"
+                             rendered="#{usuarioBean.operacaoCadastrar }" />
+            <p:commandButton id="botaoSalvar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{usuarioBean.alterar() }"
+                             rendered="#{usuarioBean.operacaoAlterar }" />
+        </h:panelGrid>
+    </h:form>
+</ui:composition>

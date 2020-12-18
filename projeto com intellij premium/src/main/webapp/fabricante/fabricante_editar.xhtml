@@ -1,0 +1,29 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <h:form id="formCadastrar" >
+        <p:panelGrid columns="2">
+            <p:outputLabel for="fabricanteNome" value="Nome" />
+            <p:inputText id="fabricanteNome" value="#{fabricanteBean.fabricante.nome }" />
+            <p:outputLabel for="fabricanteCnj" value="CNPJ" />
+            <p:inputText id="fabricanteCnj" value="#{fabricanteBean.fabricante.cnpj }" />
+            <p:outputLabel for="fabricanteSite" value="Site" />
+            <p:inputText id="fabricanteSite" value="#{fabricanteBean.fabricante.site }" />
+            <p:outputLabel for="fabricanteEndereco" value="Endereço" />
+            <p:inputText id="fabricanteEndereco" value="#{fabricanteBean.fabricante.endereco }" />
+        </p:panelGrid>
+        <h:panelGrid columns="1">
+            <p:commandButton id="botaoCadastrar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{fabricanteBean.cadastrar() }"
+                             rendered="#{fabricanteBean.operacaoCadastrar }" />
+            <p:commandButton id="botaoSalvar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{fabricanteBean.alterar() }"
+                             rendered="#{fabricanteBean.operacaoAlterar }" />
+        </h:panelGrid>
+    </h:form>
+</ui:composition>

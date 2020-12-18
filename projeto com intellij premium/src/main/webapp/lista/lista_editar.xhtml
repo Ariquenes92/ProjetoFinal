@@ -1,0 +1,33 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <h:form id="formCadastrar" >
+        <p:panelGrid columns="2">
+            <p:outputLabel for="listaNome" value="Nome" />
+            <p:inputText id="listaNome" value="#{listaBean.lista.nome }" />
+            <p:outputLabel for="listaDataCriacao" value="Data de Criação" />
+            <p:inputText id="listaDataCriacao" value="#{listaBean.lista.datacriacao }" />
+            <p:outputLabel for="listaLocalCompra" value="Lugar da Compra" />
+            <p:inputText id="listaLocalCompra" value="#{listaBean.lista.localCompra }" />
+            <p:outputLabel for="listaLocalEntrega" value="Local de Entrega" />
+            <p:inputText id="listaLocalEntrega" value="#{listaBean.lista.localEntrega }" />
+            <h:outputText value="Comprador" />
+            <h:selectOneMenu>
+                <f:selectItems value="#{usuarioBean.usuarios}" />
+            </h:selectOneMenu>
+        </p:panelGrid>
+        <h:panelGrid columns="1">
+            <p:commandButton id="botaoCadastrar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{listaBean.cadastrar() }"
+                             rendered="#{listaBean.operacaoCadastrar }" />
+            <p:commandButton id="botaoSalvar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{listaBean.alterar() }"
+                             rendered="#{listaBean.operacaoAlterar }" />
+        </h:panelGrid>
+    </h:form>
+</ui:composition>

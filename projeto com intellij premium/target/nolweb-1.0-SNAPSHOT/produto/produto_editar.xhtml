@@ -1,0 +1,39 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <h:form id="formCadastrar" >
+        <p:panelGrid columns="2">
+            <p:outputLabel for="produtoNome" value="Nome" />
+            <p:inputText id="produtoNome" value="#{produtoBean.produto.nome }" />
+            <p:outputLabel for="produtoPeso" value="Peso" />
+            <p:inputText id="produtoPeso" value="#{produtoBean.produto.peso }" />
+            <p:outputLabel for="produtoValidade" value="Validade" />
+            <p:inputText id="produtoValidade" value="#{produtoBean.produto.validade }" />
+            <p:outputLabel for="produtoFabricacao" value="Data de Fabricação" />
+            <p:inputText id="produtoFabricacao" value="#{produtoBean.produto.fabricacao }" />
+            <p:outputLabel for="produtoValor" value="Valor" />
+            <p:inputText id="produtoValor" value="#{produtoBean.produto.valor }" />
+            <p:outputLabel for="produtoQuantidade" value="Quantidade" />
+            <p:inputText id="produtoQuantidade" value="#{produtoBean.produto.quantidade }" />
+            <h:outputText value="Fabricante" />
+            <h:selectOneMenu>
+                <f:selectItems value="#{fabricanteBean.fabricantes}" />
+            </h:selectOneMenu>
+
+
+        </p:panelGrid>
+        <h:panelGrid columns="1">
+            <p:commandButton id="botaoCadastrar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{produtoBean.cadastrar() }"
+                             rendered="#{produtoBean.operacaoCadastrar }" />
+            <p:commandButton id="botaoSalvar" title="SALVAR"
+                             icon="fa fa-floppy-o" update=":geral"
+                             actionListener ="#{produtoBean.alterar() }"
+                             rendered="#{produtoBean.operacaoAlterar }" />
+        </h:panelGrid>
+    </h:form>
+</ui:composition>

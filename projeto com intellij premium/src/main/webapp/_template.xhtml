@@ -1,0 +1,37 @@
+<?xml version ="1.0" encoding ="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+<h:head />
+<h:body>
+    <div id="cabecalho" >
+        <h:panelGrid columns="2">
+            <h:graphicImage library="img" name="logo.png" />
+        </h:panelGrid>
+        <p:growl id="messages" showDetail ="true" autoUpdate ="true"/>
+        <h:form>
+            <p:menuButton value="Menu">
+                <p:menuitem value="Listas" action="/lista/consultar?faces-redirect=true" icon="fa fa-fw fa-address-card" />
+                <p:menuitem value="Editorias" action="/editoria/consultar?faces-redirect=true" icon="fa fa-fw fa-pencil-square-o" />
+                <p:menuitem value="Usuarios" action="/usuario/consultar?faces-redirect=true" icon="fa fa-fw fa-newspaper-o" />
+                <p:menuitem value="Produtos" action="/produto/consultar?faces-redirect=true" icon="fa fa-fw fa-newspaper-o" />
+                <p:menuitem value="Remedios" action="/remedio/consultar?faces-redirect=true" icon="fa fa-fw fa-newspaper-o" />
+                <p:menuitem value="Fabricantes" action="/fabricante/consultar?faces-redirect=true" icon="fa fa-fw fa-newspaper-o" />
+                <p:separator />
+                <p:menuitem value="Logout" action="#" icon="fa fa-fw fa-sign-out" />
+            </p:menuButton>
+        </h:form>
+        <h1>
+            <ui:insert name="titulo" ></ui:insert>
+        </h1>
+    </div>
+    <div id="conteudo" >
+        <ui:insert name="conteudo" >
+        </ui:insert>
+    </div>
+</h:body>
+</html>

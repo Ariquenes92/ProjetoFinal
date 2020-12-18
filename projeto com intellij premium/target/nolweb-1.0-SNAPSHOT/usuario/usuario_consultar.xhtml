@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="formTabelaUsuarios">
+        <p:growl id="message" showDetail="true" />
+        <p:commandButton value="Novo Usuario"
+                         update=":geral"
+                         actionListener="#{usuarioBean.preCadastrar()}"/>
+        <br />
+        <p:dataTable value="#{usuarioBean.usuarios}" var="usuario"
+                     id="tabelaUsuario" paginator="true" rows="10" width="100%"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     currentPageReportTemplate="{currentPage} de {totalPages}"
+                     rowsPerPageTemplate="10,15,20" paginatorAlwaysVisible="false"
+                     emptyMessage="Nenhum USUARIO foi encontrada">
+            <f:facet name="header">Usuarios</f:facet>
+            <p:column>
+                <p:commandButton title="ALTERAR" icon="fa fa-pencil"
+                                 update=":geral" immediate="true"
+                                 actionListener="#{usuarioBean.preAlterar(usuario)}" />
+                <p:commandButton title="REMOVER" icon="fa fa-trash"
+                                 update=":geral :formTabelaUsuarios" immediate="true"
+                                 actionListener="#{usuarioBean.remover(usuario)}">
+                    <p:confirm message="Deseja realmente remover o Usuario?"
+                               icon="ui-icon-alert" />
+                </p:commandButton>
+            </p:column>
+            <p:column headerText="Código">
+                <h:outputText value="#{usuario.idUsuario}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{usuario.nome}" />
+            </p:column>
+        </p:dataTable>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+                         style="text-align:center">
+            <p:commandButton value="Sim" type="button"
+                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="Não" type="button"
+                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
+    </h:form>
+</ui:composition>

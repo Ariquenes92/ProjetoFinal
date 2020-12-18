@@ -1,0 +1,7 @@
+br\edu\cesmac\si\nolweb\jpa\JpaUtil.class
+br\edu\cesmac\si\nolweb\teste\TestePersistenciaEditoria.class
+br\edu\cesmac\si\nolweb\domain\Jornalista.class
+br\edu\cesmac\si\nolweb\controller\OlaMundoController.class
+br\edu\cesmac\si\nolweb\domain\Noticia.class
+br\edu\cesmac\si\nolweb\domain\Editoria.class
+br\edu\cesmac\si\nolweb\repository\EditoriaRepository.class
